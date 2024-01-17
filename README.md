@@ -3,7 +3,7 @@
 **Project:** 0x02. AirBnB clone - MySQL
 **Team Members:** Mohamed Amyne Boutallaght, Abdelhamid Maaira
 
-Welcome to the AirBnB Clone project! This project is the initial step toward constructing a full web application that replicates Airbnb's functionality. In this phase, we will create a command-line interface (CLI) known as "The Console," allowing us to manage AirBnB objects using various commands, along with overseeing file storage operations. The persistence of storage between sessions is achieved through a JSON serialization/deserialization system.
+Welcome to the AirBnB Clone_v2 project! This project is the initial step toward constructing a full web application that replicates Airbnb's functionality. In this phase, we will create a command-line interface (CLI) known as "The Console," allowing us to manage AirBnB objects using various commands, along with overseeing file storage operations. The persistence of storage between sessions is achieved through a JSON serialization/deserialization system.
 
 
 ## Background Context
@@ -26,11 +26,11 @@ In addition to these objectives, the project has been enhanced to incorporate da
 
 1. Clone the repository using the following command:
   ```
-  git clone https://github.com/Yamix27/AirBnB_clone.git
+  git clone https://github.com/Hmddev23/AirBnB_clone_v2.git
   ```
 2. Move into the project directory:
   ```
-  cd AirBnB_clone
+  cd AirBnB_clone_v2
   ```
 3. Launch the console by running:
   ```
