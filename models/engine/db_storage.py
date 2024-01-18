@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" new class for sqlAlchemy """
+"""
+implementation of the sqlAlchemy class.
+"""
 from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import (create_engine)
@@ -7,14 +9,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import Base
 from models.state import State
 from models.city import City
-from models.user import User
 from models.place import Place
-from models.review import Review
 from models.amenity import Amenity
+from models.review import Review
+from models.user import User
 
 
 class DBStorage:
-    """ create tables in environmental"""
+    """
+    get environment variable and create tables
+    """
     __engine = None
     __session = None
 
@@ -33,9 +37,11 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """returns a dictionary
+        """
+        return a dictionary.
+
         Return:
-            returns a dictionary of __object
+            return a dictionary of __object.
         """
         dic = {}
         if cls:
@@ -55,23 +61,27 @@ class DBStorage:
         return (dic)
 
     def new(self, obj):
-        """add a new element in the table
+        """
+        push a new element in the table.
         """
         self.__session.add(obj)
 
     def save(self):
-        """save changes
+        """
+        save changes
         """
         self.__session.commit()
 
     def delete(self, obj=None):
-        """delete an element in the table
+        """
+        delete an element in the table.
         """
         if obj:
             self.session.delete(obj)
 
     def reload(self):
-        """configuration
+        """
+        configuration variables.
         """
         Base.metadata.create_all(self.__engine)
         sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
@@ -79,6 +89,7 @@ class DBStorage:
         self.__session = Session()
 
     def close(self):
-        """ calls remove()
+        """
+        calls remove() method to close.
         """
         self.__session.close()
