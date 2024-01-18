@@ -1,16 +1,26 @@
 #!/usr/bin/python3
-"""This is the review class"""
+"""
+Module: review.py
+
+Defines the Review class, a subclass of BaseModel.
+
+The Review class represents reviews of places in
+the AirBnB clone project.
+"""
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, ForeignKey, Float
 
 
 class Review(BaseModel, Base):
-    """This is the class for Review
+    """
+    Review class for representing reviews of places
+    in the AirBnB clone project.
+
     Attributes:
-        place_id: place id
-        user_id: user id
-        text: review description
+        text (str): The review text.
+        place_id (str): ID of the place being reviewed.
+        user_id (str): ID of the review writer.
     """
     __tablename__ = "reviews"
     text = Column(String(1024), nullable=False)

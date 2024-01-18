@@ -1,18 +1,28 @@
 #!/usr/bin/python3
-"""This is the state class"""
+"""
+Module: state.py
+
+Defines the State class, a subclass of BaseModel.
+
+The State class represents states
+in the AirBnB clone project.
+"""
+import models
+import shlex
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
-from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String
-import models
 from models.city import City
-import shlex
 
 
 class State(BaseModel, Base):
-    """This is the class for State
+    """
+    State class for representing states
+    in the AirBnB clone project.
+
     Attributes:
-        name: input name
+        name (str): Name of the state.
     """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)

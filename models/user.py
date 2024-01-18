@@ -1,20 +1,32 @@
 #!/usr/bin/python3
-"""This is the user class"""
-from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel, Base
+"""
+Module: user.py
+
+Defines the User class, a subclass of BaseModel.
+
+The User class represents users
+in the AirBnB clone project.
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+from models.base_model import BaseModel, Base
 from models.place import Place
 from models.review import Review
 
 
 class User(BaseModel, Base):
-    """This is the class for user
+    """
+    User class for representing users
+    in the AirBnB clone project.
+
     Attributes:
-        email: email address
-        password: password for you login
-        first_name: first name
-        last_name: last name
+        email (str): Email address of the user.
+        password (str): Password associated with the user.
+        first_name (str): First name of the user.
+        last_name (str): Last name of the user.
+        places: relationsship to the Place class.
+        reviews: relationship to the Review class.
     """
     __tablename__ = "users"
     email = Column(String(128), nullable=False)

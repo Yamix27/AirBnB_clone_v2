@@ -1,18 +1,29 @@
 #!/usr/bin/python3
-"""This is the city class"""
-from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel, Base
+"""
+Module: city.py
+
+Defines the City class, a subclass of BaseModel.
+
+The City class represents a city
+in the AirBnB clone project.
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from models.base_model import BaseModel, Base
 from models.place import Place
 
 
 class City(BaseModel, Base):
-    """This is the class for City
+    """
+    City class for representing cities
+    in the AirBnB clone project.
+
     Attributes:
-        state_id: The state id
-        name: input name
+        state_id (str): ID of the State.
+        name (str): Name of the city.
+        places: relationship to the Place class.
     """
     __tablename__ = "cities"
     name = Column(String(128), nullable=False)

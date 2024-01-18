@@ -1,9 +1,33 @@
 #!/usr/bin/python3
-"""This is the base model class for AirBnB"""
-from sqlalchemy.ext.declarative import declarative_base
+"""
+Module: base_model.py
+
+Defines the BaseModel class, the parent class for all
+other classes in the AirBnB_clone_v2 project.
+Handles instance initialization, serialization
+and deserialization.
+
+Classes:
+- BaseModel: The base class for objects
+in the AirBnB clone project.
+
+Attributes:
+- id (str): Unique identifier generated for each instance.
+- created_at (datetime): Instance creation time.
+- updated_at (datetime): Instance last update time.
+
+Methods:
+- __init__(self, *args, **kwargs): BaseModel constructor.
+- __str__(self): Returns a string representation of the instance.
+- save(self): Updates the instance's updated_at attribute and saves.
+- to_dict(self): Return a dictionary instance for serialization.
+- __repr__(self): Return a string representaion.
+- delete current instance from storage.
+"""
 import uuid
 import models
 from datetime import datetime
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
 
 
@@ -11,15 +35,21 @@ Base = declarative_base()
 
 
 class BaseModel:
-    """This class will defines all common attributes/methods
-    for other classes
+    """
+    define the 'BaseModel' class.
+
+    attributes:
+        id (sqlalchemy String): 'BaseModel' id.
+        created_at (sqlalchemy DateTime): creation date
+        updated_at (sqlalchemy DateTime): update date
     """
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
     updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
 
     def __init__(self, *args, **kwargs):
-        """Instantiation of base model class
+        """
+        initialize a new BaseModel
         Args:
             args: it won't be used
             kwargs: arguments for the constructor of the BaseModel
@@ -45,7 +75,9 @@ class BaseModel:
             self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
-        """returns a string
+        """
+        return the string representation of the 'BaseModel' instance.
+
         Return:
             returns a string of class name, id, and dictionary
         """
@@ -53,19 +85,23 @@ class BaseModel:
             type(self).__name__, self.id, self.__dict__)
 
     def __repr__(self):
-        """return a string representaion
+        """
+        return a string representaion.
         """
         return self.__str__()
 
     def save(self):
-        """updates the public instance attribute updated_at to current
+        """
+        updates 'updated_at' with the current datetime.
         """
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
-        """creates dictionary of the class  and returns
+        """
+        return the dictionary representation of the BaseModel instance.
+
         Return:
             returns a dictionary of all the key values in __dict__
         """
@@ -78,6 +114,7 @@ class BaseModel:
         return my_dict
 
     def delete(self):
-        """ delete object
+        """
+        delete current instance from storage.
         """
         models.storage.delete(self)
